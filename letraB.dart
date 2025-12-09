@@ -5,13 +5,15 @@ import 'dart:io';
 
 class Idade {
   int anoNasc;
-  int anoAtual;
+  //int anoAtual;
 
   // Método construtor com parametro obrigatorio
-  Idade({required this.anoNasc, required this.anoAtual});
+  Idade({required this.anoNasc});
 
   // Método para calcular a idade
   int calcularIdade() {
+    // pega o ano atual
+    int anoAtual = DateTime.now().year;
     return (anoAtual - anoNasc);
   }
 
@@ -36,7 +38,6 @@ class Idade {
       // converte para inteiro
       int ano = int.parse(input);
 
-      // pega o ano atual
       int anoAtual = DateTime.now().year;
 
       if (ano > anoAtual) {
@@ -50,8 +51,8 @@ class Idade {
 
 // programa principal
 void main() {
-  Idade suaIdade = Idade(anoNasc: 0, anoAtual: 0);
+  Idade suaIdade = Idade(anoNasc: 0);
   print("Calculando a idade");
-  suaIdade.anoAtual = suaIdade.lerAno("Ano corrente: ");
   suaIdade.anoNasc = suaIdade.lerAno("Digite seu ano de nascimento (YYYY): ");
+  print("Sua idade é: ${suaIdade.calcularIdade()}.");
 }
